@@ -1,0 +1,19 @@
+import java.util.ArrayList;
+import java.util.*;
+public class Solution {
+    public static void helper(int index,List<String> ans,String temp,String s){
+       if(index==s.length()){
+           ans.add(temp);
+           return;
+       }
+       temp+=s.charAt(index);
+       helper(index+1,ans,temp,s);
+       temp = temp.substring(0, temp.length() - 1);
+       helper(index+1,ans,temp,s);
+    }
+    public static List<String> generateSubsequences(String s) {
+        List<String> ans= new ArrayList<>();
+        helper(0,ans,"",s);
+        return ans;
+    }
+}

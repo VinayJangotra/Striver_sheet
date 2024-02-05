@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class Solution {
+    public static void fun(int index,HashSet<String>ans,String a,String temp){
+        if(index>=a.length()){
+            ans.add(temp);
+            return;
+        }
+        temp+=a.charAt(index);
+        fun(index+1,ans,a,temp);
+        temp=temp.substring(0,temp.length()-1);
+        fun(index+1,ans,a,temp);
+    }
+    public static String moreSubsequence(int n, int m, String a, String b) {
+        HashSet<String> ans1= new HashSet<>();
+        HashSet<String> ans2= new HashSet<>();
+        fun(0,ans1,a,"");
+        fun(0,ans2,b,"");
+        if(ans2.size()>ans1.size()){
+            return b;
+        }
+        return a;
+    }
+}

@@ -1,0 +1,35 @@
+class Solution {
+    public void markRow(int mat[][],int n,int m,int i){
+        for(int j=0;j<m;j++){
+            if(mat[i][j] != 0){
+                mat[i][j]=-1997;
+            }
+        }
+    }
+    public void markCol(int mat[][],int n,int m,int j){
+       for(int i=0;i<n;i++){
+        if(mat[i][j] !=0){
+            mat[i][j]=-1997;
+        }
+    }
+}
+    public void setZeroes(int[][] matrix) {
+      int n=matrix.length;
+      int m=matrix[0].length;
+      for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(matrix[i][j]==0){
+                markRow(matrix,n,m,i);
+                markCol(matrix,n,m,j);
+            }
+        }
+      }
+      for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(matrix[i][j]==-1997){
+                matrix[i][j]=0;
+            }
+        }
+      }       
+    }
+}

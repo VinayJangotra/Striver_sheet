@@ -1,0 +1,32 @@
+class Solution
+{
+    // function returns the head of the linkedlist
+    Node deleteNode(Node head,int x)
+    {
+	   if(head==null || head.next==null)return null;
+	   Node curr=head;
+	   // Head case
+	   if(x==1){
+	       head=head.next;
+	       curr.next=null;
+	       head.prev=null;
+	       return head;
+	   }
+	   while(x-->1){
+	       curr=curr.next;
+	   }
+	   Node front=curr.next;
+	   Node back=curr.prev;
+	   // Tail case
+	   if(front==null){
+	       curr.prev=null;
+	       back.next=null;
+	       return head;
+	   }
+	   back.next=front;
+	   front.prev=back;
+	   curr.next=null;
+	   curr.prev=null;
+	   return head;
+    }
+}
